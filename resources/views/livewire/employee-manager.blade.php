@@ -42,7 +42,7 @@
                             <th class="px-4 py-4">Employee</th>
                             <th class="px-4 py-4">PPS Number</th>
                             <th class="px-4 py-4">Department / Role</th>
-                            <th class="px-4 py-4">Financials</th>
+                            <th class="px-4 py-4">Financials (€)</th>
                             <th class="px-4 py-4 text-right">Actions</th>
                         </tr>
                     </thead>
@@ -51,14 +51,9 @@
                             <tr @dblclick="loadEmployeeDirect({{ json_encode($employee) }})"
                                 class="hover:bg-slate-850/50 cursor-pointer transition-colors group">
                                 <td class="px-4 py-4 whitespace-nowrap">
-                                    <div class="flex items-center gap-3">
-                                        <div class="h-9 w-9 rounded-full bg-slate-800 flex items-center justify-center font-bold text-slate-200 text-sm border border-slate-700">
-                                            {{ substr($employee->name, 0, 2) }}
-                                        </div>
-                                        <div>
-                                            <div class="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">{{ $employee->name }}</div>
-                                            <div class="text-xs text-slate-400">{{ $employee->email }}</div>
-                                        </div>
+                                    <div>
+                                        <div class="text-sm font-semibold text-white group-hover:text-emerald-400 transition-colors">{{ $employee->name }}</div>
+                                        <div class="text-xs text-slate-400">{{ $employee->email }}</div>
                                     </div>
                                 </td>
                                 <td class="px-4 py-4 whitespace-nowrap text-sm text-slate-300 font-mono">
@@ -69,8 +64,8 @@
                                     <div class="text-xs text-slate-500">{{ $employee->job_title }}</div>
                                 </td>
                                 <td class="px-4 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-emerald-400 font-medium">€{{ number_format($employee->salary, 2) }}/yr</div>
-                                    <div class="text-xs text-slate-400">€{{ number_format($employee->hourly_rate, 2) }}/hr</div>
+                                    <div class="text-sm font-semibold" style="color: #1e3a8a !important;">{{ number_format($employee->salary, 2) }}/yr</div>
+                                    <div class="text-xs font-medium" style="color: #2563eb !important;">{{ number_format($employee->hourly_rate, 2) }}/hr</div>
                                 </td>
                                 <td class="px-4 py-4 whitespace-nowrap text-right text-sm">
                                     <div class="flex justify-end gap-2">
@@ -114,18 +109,18 @@
                     {{ $employeeId ? 'Edit Profile' : 'New Employee' }}
                 </h3>
                 @if($employeeId)
-                    <button wire:click="resetForm" class="text-xs text-slate-400 hover:text-white transition-colors bg-slate-800 px-2 py-1 rounded">
+                    <button wire:click="resetForm" class="text-xs bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-semibold rounded-xl px-3 py-1.5 transition-all shadow-md shadow-emerald-500/20 border-none">
                         Clear Form
                     </button>
                 @endif
             </div>
 
             @if (session()->has('message'))
-                <div class="mb-4 p-3 bg-emerald-950/50 border border-emerald-800 text-emerald-300 rounded-xl text-sm flex items-center gap-2">
-                    <svg class="h-4 w-4 text-emerald-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div class="mb-4 p-3 bg-rose-50 border border-rose-200 rounded-xl text-sm flex items-center gap-2">
+                    <svg class="h-4 w-4 text-rose-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span>{{ session('message') }}</span>
+                    <span class="font-bold text-rose-600" style="color: #e11d48 !important;">{{ session('message') }}</span>
                 </div>
             @endif
 

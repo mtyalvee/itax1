@@ -13,11 +13,11 @@
             <p class="text-xs text-slate-400 mt-1 font-sans">Adjust global PAYE, USC, and PRSI rates, bands, and computational thresholds</p>
         </div>
         <div class="flex items-center gap-3">
-            <button @click="$dispatch('set-tab', 'dashboard')" class="py-2 px-4 bg-slate-800 hover:bg-slate-700 active:scale-95 text-slate-200 font-semibold rounded-xl text-xs transition-all border border-slate-700 flex items-center gap-1.5 font-sans">
-                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <button @click="$dispatch('set-tab', 'dashboard')" class="py-2 px-4 active:scale-95 font-bold rounded-xl text-xs transition-all flex items-center gap-1.5 font-sans" style="background-color: #ffe4e6 !important; color: #e11d48 !important; border: 1px solid #fecdd3 !important;">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: #e11d48 !important;">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                 </svg>
-                <span>Back to Dashboard</span>
+                <span class="font-bold" style="color: #e11d48 !important;">Back to Dashboard</span>
             </button>
             <button wire:click="save" class="py-2.5 px-5 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold rounded-xl text-xs transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2 font-sans">
                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

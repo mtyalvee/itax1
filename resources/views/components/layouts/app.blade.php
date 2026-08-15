@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full bg-slate-950 text-slate-100">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="h-full" data-theme="soft">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,9 +40,107 @@
             font-family: 'Outfit', sans-serif;
             background-color: #050b18;
         }
+
+        /* --- Soft Mode Overrides --- */
+        html[data-theme="soft"] {
+            background-color: #f7f5f0 !important;
+            color: #2e2c29 !important;
+        }
+        html[data-theme="soft"] body {
+            background-color: #f7f5f0 !important;
+            color: #2e2c29 !important;
+        }
+        
+        /* Nav Override */
+        html[data-theme="soft"] nav {
+            background-color: #efede6 !important;
+            border-color: #e2ded4 !important;
+        }
+        
+        /* Background Island */
+        html[data-theme="soft"] .bg-slate-950,
+        html[data-theme="soft"] select,
+        html[data-theme="soft"] input {
+            background-color: #eae7de !important;
+            color: #2e2c29 !important;
+        }
+        
+        /* Background Card */
+        html[data-theme="soft"] .bg-slate-900 {
+            background-color: #ffffff !important;
+        }
+
+        /* Background Active elements */
+        html[data-theme="soft"] .bg-slate-850 {
+            background-color: #efede6 !important;
+        }
+
+        /* Hover states */
+        html[data-theme="soft"] .hover\:bg-slate-850\/50:hover {
+            background-color: rgba(223, 219, 207, 0.4) !important;
+        }
+        html[data-theme="soft"] .group:hover .group-hover\:text-emerald-400 {
+            color: #10b981 !important;
+        }
+        
+        /* Borders */
+        html[data-theme="soft"] .border-slate-800,
+        html[data-theme="soft"] .border-slate-850,
+        html[data-theme="soft"] .divide-slate-850 > :not([hidden]) ~ :not([hidden]) {
+            border-color: #e2ded4 !important;
+        }
+        
+        /* Text overrides */
+        html[data-theme="soft"] .text-white,
+        html[data-theme="soft"] .text-slate-100 {
+            color: #1c1b1a !important;
+        }
+        html[data-theme="soft"] .text-slate-200,
+        html[data-theme="soft"] .text-slate-300 {
+            color: #2e2c29 !important;
+        }
+        html[data-theme="soft"] .text-slate-400 {
+            color: #55514a !important;
+        }
+        html[data-theme="soft"] .text-slate-450 {
+            color: #3d3a35 !important;
+        }
+        html[data-theme="soft"] .text-slate-500 {
+            color: #5a564f !important;
+        }
+        html[data-theme="soft"] .text-rose-455 {
+            color: #c22d2d !important;
+        }
+        
+        /* Adjust active nav buttons */
+        html[data-theme="soft"] button.bg-slate-850 {
+            background-color: #dfdbcf !important;
+            color: #1c1b1a !important;
+        }
+        
+        /* Adjust badge highlights/cards in soft mode */
+        html[data-theme="soft"] .bg-emerald-500\/20 {
+            background-color: rgba(16, 185, 129, 0.15) !important;
+        }
+        html[data-theme="soft"] .bg-emerald-500\/10 {
+            background-color: rgba(16, 185, 129, 0.1) !important;
+        }
+        html[data-theme="soft"] .bg-blue-500\/10 {
+            background-color: rgba(59, 130, 246, 0.1) !important;
+        }
+        html[data-theme="soft"] .bg-violet-500\/10 {
+            background-color: rgba(139, 92, 246, 0.1) !important;
+        }
+        html[data-theme="soft"] .bg-cyan-500\/10 {
+            background-color: rgba(6, 182, 212, 0.1) !important;
+        }
+        html[data-theme="soft"] .absolute.opacity-5 {
+            opacity: 0.03 !important;
+            color: #2d2b2a !important;
+        }
     </style>
 </head>
-<body class="h-full antialiased" x-data="{ currentTab: 'dashboard' }" @set-tab.window="currentTab = $event.detail">
+<body class="h-full antialiased" x-data="{ currentTab: 'dashboard', theme: 'soft' }" x-init="document.documentElement.setAttribute('data-theme', 'soft');" @set-tab.window="currentTab = $event.detail">
     <div class="min-h-full">
         <!-- Modern Premium Navigation -->
         <nav class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
@@ -97,7 +195,7 @@
         </nav>
 
         <!-- Main Content Area -->
-        <main class="py-10 max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+        <main class="py-10 mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300" :class="currentTab === 'calculator' ? 'max-w-[98%]' : 'max-w-[1400px]'">
             <div x-show="currentTab === 'dashboard'">
                 @livewire('dashboard')
             </div>

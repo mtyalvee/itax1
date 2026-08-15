@@ -110,6 +110,14 @@ class Dashboard extends Component
             }
         }
 
+        $this->dispatch('payroll-data-updated', [
+            'departmentLabels' => $departmentData->pluck('department')->toArray(),
+            'departmentCounts' => $departmentData->pluck('count')->toArray(),
+            'paye' => $totalPayeLiabilities,
+            'usc' => $totalUscLiabilities,
+            'prsi' => $totalPrsiLiabilities,
+        ]);
+
         return view('livewire.dashboard', [
             'totalEmployees' => $totalEmployees,
             'activeEmployees' => $activeEmployees,

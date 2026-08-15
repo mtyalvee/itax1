@@ -78,19 +78,19 @@
             <!-- 1. Previous Section -->
             <td class="comparison-col">
                 <div class="card">
-                    <div class="card-title">1. Prev Accumulated</div>
+                    <div class="card-title">1. Prev Accumulated (€)</div>
                     @if($prevAccumulated['has_records'])
-                        <div class="card-row"><span class="card-row-label">Gross Wages:</span> <span class="card-row-value">€{{ number_format($prevAccumulated['gross_pay'], 2) }}</span></div>
-                        <div class="card-row"><span class="card-row-label">PAYE Tax:</span> <span class="card-row-value">€{{ number_format($prevAccumulated['paye'], 2) }}</span></div>
-                        <div class="card-row"><span class="card-row-label">USC Charge:</span> <span class="card-row-value">€{{ number_format($prevAccumulated['usc'], 2) }}</span></div>
-                        <div class="card-row"><span class="card-row-label">PRSI Employee:</span> <span class="card-row-value">€{{ number_format($prevAccumulated['prsi'], 2) }}</span></div>
-                        <div class="card-row card-total"><span class="card-row-label">Net Pay:</span> <span class="card-row-value">€{{ number_format($prevAccumulated['net_pay'], 2) }}</span></div>
+                        <div class="card-row"><span class="card-row-label">Gross Wages:</span> <span class="card-row-value">{{ number_format($prevAccumulated['gross_pay'], 2) }}</span></div>
+                        <div class="card-row"><span class="card-row-label">PAYE Tax:</span> <span class="card-row-value">{{ number_format($prevAccumulated['paye'], 2) }}</span></div>
+                        <div class="card-row"><span class="card-row-label">USC Charge:</span> <span class="card-row-value">{{ number_format($prevAccumulated['usc'], 2) }}</span></div>
+                        <div class="card-row"><span class="card-row-label">PRSI Employee:</span> <span class="card-row-value">{{ number_format($prevAccumulated['prsi'], 2) }}</span></div>
+                        <div class="card-row card-total"><span class="card-row-label">Net Pay:</span> <span class="card-row-value">{{ number_format($prevAccumulated['net_pay'], 2) }}</span></div>
                     @else
-                        <div class="card-row"><span class="card-row-label">Gross Wages:</span> <span class="card-row-value">€0.00</span></div>
-                        <div class="card-row"><span class="card-row-label">PAYE Tax:</span> <span class="card-row-value">€0.00</span></div>
-                        <div class="card-row"><span class="card-row-label">USC Charge:</span> <span class="card-row-value">€0.00</span></div>
-                        <div class="card-row"><span class="card-row-label">PRSI Employee:</span> <span class="card-row-value">€0.00</span></div>
-                        <div class="card-row card-total"><span class="card-row-label">Net Pay:</span> <span class="card-row-value">€0.00</span></div>
+                        <div class="card-row"><span class="card-row-label">Gross Wages:</span> <span class="card-row-value">0.00</span></div>
+                        <div class="card-row"><span class="card-row-label">PAYE Tax:</span> <span class="card-row-value">0.00</span></div>
+                        <div class="card-row"><span class="card-row-label">USC Charge:</span> <span class="card-row-value">0.00</span></div>
+                        <div class="card-row"><span class="card-row-label">PRSI Employee:</span> <span class="card-row-value">0.00</span></div>
+                        <div class="card-row card-total"><span class="card-row-label">Net Pay:</span> <span class="card-row-value">0.00</span></div>
                     @endif
                 </div>
             </td>
@@ -98,24 +98,24 @@
             <!-- 2. Current Section -->
             <td class="comparison-col">
                 <div class="card card-current">
-                    <div class="card-title">2. Current Period</div>
-                    <div class="card-row"><span class="card-row-label">Gross Wages:</span> <span class="card-row-value">€{{ number_format($payslip->gross_pay, 2) }}</span></div>
-                    <div class="card-row"><span class="card-row-label">PAYE Tax:</span> <span class="card-row-value">€{{ number_format($payslip->paye, 2) }}</span></div>
-                    <div class="card-row"><span class="card-row-label">USC Charge:</span> <span class="card-row-value">€{{ number_format($payslip->usc, 2) }}</span></div>
-                    <div class="card-row"><span class="card-row-label">PRSI Employee:</span> <span class="card-row-value">€{{ number_format($payslip->prsi, 2) }}</span></div>
-                    <div class="card-row card-total"><span class="card-row-label">Net Pay:</span> <span class="card-row-value">€{{ number_format($payslip->net_pay, 2) }}</span></div>
+                    <div class="card-title">2. Current Period (€)</div>
+                    <div class="card-row"><span class="card-row-label">Gross Wages:</span> <span class="card-row-value">{{ number_format($payslip->gross_pay, 2) }}</span></div>
+                    <div class="card-row"><span class="card-row-label">PAYE Tax:</span> <span class="card-row-value">{{ number_format($payslip->paye, 2) }}</span></div>
+                    <div class="card-row"><span class="card-row-label">USC Charge:</span> <span class="card-row-value">{{ number_format($payslip->usc, 2) }}</span></div>
+                    <div class="card-row"><span class="card-row-label">PRSI Employee:</span> <span class="card-row-value">{{ number_format($payslip->prsi, 2) }}</span></div>
+                    <div class="card-row card-total"><span class="card-row-label">Net Pay:</span> <span class="card-row-value">{{ number_format($payslip->net_pay, 2) }}</span></div>
                 </div>
             </td>
 
             <!-- 3. Accumulated Section -->
             <td class="comparison-col">
                 <div class="card">
-                    <div class="card-title">3. YTD Accumulated</div>
-                    <div class="card-row"><span class="card-row-label">YTD Gross:</span> <span class="card-row-value">€{{ number_format($accumulated['gross_pay'], 2) }}</span></div>
-                    <div class="card-row"><span class="card-row-label">YTD PAYE:</span> <span class="card-row-value">€{{ number_format($accumulated['paye'], 2) }}</span></div>
-                    <div class="card-row"><span class="card-row-label">YTD USC:</span> <span class="card-row-value">€{{ number_format($accumulated['usc'], 2) }}</span></div>
-                    <div class="card-row"><span class="card-row-label">YTD PRSI:</span> <span class="card-row-value">€{{ number_format($accumulated['prsi'], 2) }}</span></div>
-                    <div class="card-row card-total"><span class="card-row-label">YTD Net:</span> <span class="card-row-value">€{{ number_format($accumulated['net_pay'], 2) }}</span></div>
+                    <div class="card-title">3. YTD Accumulated (€)</div>
+                    <div class="card-row"><span class="card-row-label">YTD Gross:</span> <span class="card-row-value">{{ number_format($accumulated['gross_pay'], 2) }}</span></div>
+                    <div class="card-row"><span class="card-row-label">YTD PAYE:</span> <span class="card-row-value">{{ number_format($accumulated['paye'], 2) }}</span></div>
+                    <div class="card-row"><span class="card-row-label">YTD USC:</span> <span class="card-row-value">{{ number_format($accumulated['usc'], 2) }}</span></div>
+                    <div class="card-row"><span class="card-row-label">YTD PRSI:</span> <span class="card-row-value">{{ number_format($accumulated['prsi'], 2) }}</span></div>
+                    <div class="card-row card-total"><span class="card-row-label">YTD Net:</span> <span class="card-row-value">{{ number_format($accumulated['net_pay'], 2) }}</span></div>
                 </div>
             </td>
         </tr>
