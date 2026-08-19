@@ -62,10 +62,7 @@ class PayslipPdfController extends Controller
 
         $filename = 'Payslip_' . str_replace(' ', '_', $payslip->employee->name) . '_' . $payslip->period_start->format('Ymd') . '.pdf';
 
-        if ($request->has('download')) {
-            return $pdf->download($filename);
-        }
-        return $pdf->stream($filename);
+        return $pdf->download($filename);
     }
 
     /**
@@ -99,10 +96,7 @@ class PayslipPdfController extends Controller
 
         $filename = 'Employee_Report_' . str_replace(' ', '_', $employee->name) . '_' . now()->format('Ymd') . '.pdf';
 
-        if ($request->has('download')) {
-            return $pdf->download($filename);
-        }
-        return $pdf->stream($filename);
+        return $pdf->download($filename);
     }
 
     /**

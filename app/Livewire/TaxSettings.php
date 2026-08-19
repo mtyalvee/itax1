@@ -59,6 +59,6 @@ class TaxSettings extends Component
 
     public function render()
     {
-        return view('livewire.tax-settings')->layout('layouts.app');
+        return view('livewire.tax-settings');
     }
 }

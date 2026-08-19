@@ -138,6 +138,17 @@
             opacity: 0.03 !important;
             color: #2d2b2a !important;
         }
+
+        /* Alternate row styling for Soft theme */
+        html[data-theme="soft"] tbody tr:nth-child(odd) {
+            background-color: #ffffff !important;
+        }
+        html[data-theme="soft"] tbody tr:nth-child(even) {
+            background-color: #f5f3ec !important;
+        }
+        html[data-theme="soft"] tbody tr:hover {
+            background-color: #eae7de !important;
+        }
     </style>
 </head>
 <body class="h-full antialiased" x-data="{ currentTab: 'dashboard', theme: 'soft' }" x-init="document.documentElement.setAttribute('data-theme', 'soft');" @set-tab.window="currentTab = $event.detail">

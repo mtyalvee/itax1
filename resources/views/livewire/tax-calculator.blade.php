@@ -5,7 +5,7 @@
             <h2 class="text-xl font-bold text-white tracking-tight font-sans">Tax Computation & Payroll Register</h2>
             <p class="text-xs text-slate-400 mt-1 font-sans">Audit, sort, filter, and run payroll computations across all employee slips</p>
         </div>
-        <button wire:click="startNewComputation" class="py-2.5 px-5 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold rounded-xl text-xs transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+        <button wire:click="startNewComputation" class="py-2.5 px-5 bg-emerald-100 hover:bg-emerald-200 active:scale-95 text-emerald-800 border border-emerald-300/50 font-bold rounded-xl text-sm transition-all flex items-center gap-2">
             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
@@ -37,7 +37,7 @@
             <table class="w-full text-left border-collapse min-w-[1300px]">
                 <thead class="sticky top-0 z-20 bg-slate-950 shadow-md">
                     <!-- Column Headers (Sortable) -->
-                    <tr class="bg-slate-950 border-b border-slate-850 text-slate-400 text-[10px] uppercase font-bold tracking-wider font-mono">
+                    <tr class="bg-slate-950 border-b border-slate-850 text-slate-400 text-xs uppercase font-extrabold tracking-wider font-mono">
                         <th class="px-4 py-3 text-center min-w-[170px]">Actions</th>
                         <th wire:click="sortBy('name')" class="px-4 py-3 cursor-pointer hover:text-white transition-colors">
                             Employee Name
@@ -135,17 +135,17 @@
                             $deductions = $ps->paye + $ps->usc + $ps->prsi;
                             $weekNo = date('W', strtotime($ps->period_end));
                         @endphp
-                        <tr class="hover:bg-slate-950/20 text-slate-300 transition-colors">
+                        <tr class="odd:bg-slate-900 even:bg-slate-950/40 hover:bg-slate-800/30 text-slate-300 transition-colors">
                             <td class="px-4 py-3 text-center whitespace-nowrap space-x-1 font-sans">
                                 <a href="{{ route('pdf.payslip', $ps->id) }}" target="_blank" class="inline-flex p-1.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-600 border border-blue-500/20 rounded transition-all align-middle" title="Download PDF">
                                     <svg class="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                                     </svg>
                                 </a>
-                                <button wire:click="editPayslip({{ $ps->id }})" class="px-2.5 py-1 bg-amber-400 hover:bg-amber-500 text-black rounded text-[10px] font-bold transition-all align-middle">
+                                <button wire:click="editPayslip({{ $ps->id }})" class="px-2.5 py-1 bg-amber-100 hover:bg-amber-200 text-amber-800 border border-amber-300/50 rounded text-xs font-bold transition-all align-middle">
                                     Edit
                                 </button>
-                                <button wire:click="deletePayslip({{ $ps->id }})" wire:confirm="Are you sure you want to delete this payslip?" class="px-2.5 py-1 bg-rose-400 hover:bg-rose-500 text-black rounded text-[10px] font-bold transition-all align-middle">
+                                <button wire:click="deletePayslip({{ $ps->id }})" wire:confirm="Are you sure you want to delete this payslip?" class="px-2.5 py-1 bg-rose-100 hover:bg-rose-200 text-rose-800 border border-rose-300/50 rounded text-xs font-bold transition-all align-middle">
                                     Delete
                                 </button>
                             </td>
@@ -234,19 +234,19 @@
 
                             <!-- Steps Tabs -->
                             <div class="flex border border-slate-200 bg-slate-100/80 rounded-xl p-1 gap-1 shadow-inner">
-                                <button @click="activeStep = 1" :class="activeStep === 1 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-[10px] rounded transition-all font-sans">
+                                <button @click="activeStep = 1" :class="activeStep === 1 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-xs rounded transition-all font-sans">
                                     1. Gross Pay
                                 </button>
-                                <button @click="activeStep = 2" :class="activeStep === 2 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-[10px] rounded transition-all font-sans" :disabled="!$wire.selectedEmployeeId">
+                                <button @click="activeStep = 2" :class="activeStep === 2 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-xs rounded transition-all font-sans" :disabled="!$wire.selectedEmployeeId">
                                     2. PAYE
                                 </button>
-                                <button @click="activeStep = 3" :class="activeStep === 3 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-[10px] rounded transition-all font-sans" :disabled="!$wire.selectedEmployeeId">
+                                <button @click="activeStep = 3" :class="activeStep === 3 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-xs rounded transition-all font-sans" :disabled="!$wire.selectedEmployeeId">
                                     3. USC
                                 </button>
-                                <button @click="activeStep = 4" :class="activeStep === 4 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-[10px] rounded transition-all font-sans" :disabled="!$wire.selectedEmployeeId">
+                                <button @click="activeStep = 4" :class="activeStep === 4 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-xs rounded transition-all font-sans" :disabled="!$wire.selectedEmployeeId">
                                     4. PRSI
                                 </button>
-                                <button @click="activeStep = 5" :class="activeStep === 5 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-[10px] rounded transition-all font-sans" :disabled="!$wire.selectedEmployeeId">
+                                <button @click="activeStep = 5" :class="activeStep === 5 ? 'bg-white text-slate-800 shadow-sm border border-slate-200/50 font-bold' : 'text-slate-500 hover:text-slate-800 hover:bg-white/40'" class="flex-1 py-1.5 px-2 text-xs rounded transition-all font-sans" :disabled="!$wire.selectedEmployeeId">
                                     5. Net Wages
                                 </button>
                             </div>
@@ -363,15 +363,15 @@
 
                                         <div class="pt-4 border-t border-slate-800 space-y-2">
                                             @if($editingPayslipId)
-                                                <button wire:click="addOrUpdatePayslip" class="w-full py-2.5 px-4 bg-sky-400 hover:bg-sky-500 active:scale-95 text-black font-extrabold rounded-xl text-xs transition-all shadow-lg shadow-sky-400/20 flex items-center justify-center gap-2 font-sans border-none">
-                                                    <svg class="h-4 w-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <button wire:click="addOrUpdatePayslip" class="w-full py-2.5 px-4 bg-sky-100 hover:bg-sky-200 active:scale-95 text-sky-800 border border-sky-300/50 font-bold rounded-xl text-sm transition-all flex items-center justify-center gap-2 font-sans">
+                                                    <svg class="h-4 w-4 text-sky-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                                                     </svg>
-                                                    <span class="font-extrabold text-black">Add/Update</span>
+                                                    <span class="font-bold text-sky-800">Add/Update</span>
                                                 </button>
                                             @endif
 
-                                            <button wire:click="savePayslip" class="w-full py-2.5 px-4 bg-emerald-500 hover:bg-emerald-600 active:scale-95 text-white font-bold rounded-xl text-xs transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 font-sans">
+                                            <button wire:click="savePayslip" class="w-full py-2.5 px-4 bg-emerald-100 hover:bg-emerald-200 active:scale-95 text-emerald-800 border border-emerald-300/50 font-bold rounded-xl text-sm transition-all flex items-center justify-center gap-2 font-sans">
                                                 <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4" />
                                                 </svg>
@@ -401,7 +401,7 @@
 
                 <!-- Modal Footer -->
                 <div class="px-6 py-4 border-t border-slate-800 flex justify-end">
-                    <button wire:click="$set('showProcessModal', false)" class="py-2 px-4 bg-slate-800 hover:bg-slate-700 active:scale-95 text-white font-semibold rounded-lg text-xs transition-all font-sans">
+                    <button wire:click="$set('showProcessModal', false)" class="py-2 px-4 bg-slate-100 hover:bg-slate-200 active:scale-95 text-slate-800 border border-slate-200/60 font-semibold rounded-lg text-sm transition-all font-sans">
                         Close
                     </button>
                 </div>
